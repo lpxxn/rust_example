@@ -84,6 +84,19 @@ fn main() {
        }
     };
     println!("x = {}", x);
+
+    control = 0;
+    while control != 10 {
+        control += 1
+    }
+    println!("control = {}", control);
+    let arr: [u32; 5] = [1, 2 ,3 ,4, 5];   
+    // 可以这样
+    // for ele in arr.iter() {
+    // 也可以这样
+    for ele in &arr {
+        println!("element = {}", ele);
+    }
 }
 
 fn add(a: i32, b: i32) -> i32 {
