@@ -62,10 +62,12 @@ fn main() {
         8
     };
     println!("x = {}", x);
+
     // loop
     let mut  control = 0;
     loop {
        println!("in loop");
+       // rust 没有 i++ 因为认为不安全 https://prev.rust-lang.org/en-US/faq.html
        control +=  1;
        if control == 10 {
           break;
