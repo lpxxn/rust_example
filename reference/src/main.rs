@@ -14,6 +14,7 @@ fn main() {
     println!("r2: {}, r3: {}, st2: {}", r2, r3, str2);
     
     let b1 = &mut str2;
+    // 我们将获取引用作为函数参数称为 借用（borrowing）
     str_add(b1);
     // 不能再访问 r2 r3 同时读同时写不是允许的 只能有多个可读，或者一个可读写
     //println!("r2: {}, r3: {}, b1: {}", r2, r3, b1);
