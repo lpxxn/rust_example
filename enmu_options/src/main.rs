@@ -38,6 +38,26 @@ fn main() {
     i1.print();
     let i1 = Message::Change(1, 2, 3);
     i1.print();
+
+    // option
+    let o1 = Some(String::from("abadfe3"));
+    println!("o1 = {:?}", o1);
+    let o1 = Some(5);
+    println!("o1 = {:?}", o1);
+    let mut x: i32 = 5;
+    let y: Option<i32> = Some(2);
+    match y {
+        Some(i) => x = x + i,
+        None => {println!("do nothing");},
+    }
+    println!("x = {}", x);
+    let z = plus_one(y);
+    println!("z = {:?}", z);
+    if let Some(v) = plus_one(y) {
+        println!("v = {}", v);
+    } else {
+        println!("none");
+    }
 }
 
 // classic
@@ -67,5 +87,13 @@ impl Message {
             Message::Change(a, b, c) => println!("Change a = {}, b = {}, c = {}", a, b, c),
             Message::Write(ref s) => println!("s = {}", s),
         }
+    }
+}
+
+fn plus_one(x: Option<i32>) -> Option<i32> {
+    match x {
+        Some(a) => Some(a + 2),
+        //None => None,
+        _ => None
     }
 }
