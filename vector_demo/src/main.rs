@@ -21,14 +21,17 @@ fn main() {
 
     // update
     v.push(3);
-    //let v1 = v;
+    let v1 = v[0];
+    // 注意 move 最后面有解释
+    // for ele in v { // value moved here
+    //     println!("ele = {}", ele);
+    // }
+    // value borrowed here after move
+    // println!("v = {:?}", v);
+    
     for ele in &v {
         println!("ele = {}", ele);
     }
-    // 注意 move 最后面有解释
-    // for ele in v {
-    //     println!("ele = {}", ele);
-    // }
     
     // 修改
     for ele in &mut v {
@@ -38,7 +41,7 @@ fn main() {
     for ele in &v {
         println!("ele = {}", ele);
     }
-
+    println!("v = {:?}", v);
     // 枚举
     enum Context {
         Text(String),
