@@ -116,8 +116,14 @@ fn main() {
     let t1 = produce_item_with_name2(false);
     println!("t1 name {}", t1.get_name());
 
-    let t1 = produce_item_with_name2(true);
-    println!("t1 name {}", t1.get_name());
+    let t2 = produce_item_with_name2(true);
+    println!("t2 name {}", t2.get_name());
+
+    let s = Student{name: "xiao".to_string(), age: 10};
+    let t = Teacher{name: "da".to_string(), age: 20};
+    let p = PeopleMatchInfomation{master: s, student: t};
+    p.print_all_information();
+
     println!("Hello, world!");
 }
 /*
@@ -127,3 +133,16 @@ fn description(&self) -> &str
 fn description<'a>(&'a self) -> &'a str
 
 */
+
+#[derive(Debug)]
+struct PeopleMatchInfomation<T, U> {
+    master: T,
+    student: U,
+}
+
+impl<T: GetInformation+School, U: GetInformation+School> PeopleMatchInfomation<T, U> {
+    fn print_all_information(&self) {
+        println!("master name {}, age {}, school {}", self.master.get_name(), self.master.get_age(), self.master.get_school_name());
+        println!("student name {}, age {}, school {}", self.student.get_name(), self.student.get_age(), self.student.get_school_name());
+    }
+}
