@@ -17,7 +17,19 @@ fn main() {
     let p23 = Point2{x: 1.2, y: "中国"};
     let p24 = p23.creat_point(p2);
     println!("p24 {:?}", p24);
+    /*
+    let p24 = p23.creat_point(p2);
+   |                            -- value moved here
+     因为creat_point 方法是self
+     value borrowed here after move
+    */
+    // println!("p2 {:?}", p2);
 
+    let p31 = Point3{x:4, y: 'a'};
+    let p32 = Point3{x:1.1, y: (1, 2)};
+    let p33 = p32.creat_point(&p31);
+    println!("p33 {:?}", p33);
+    println!("p31 {:?}", p31);
     println!("Hello, world!");
 }
     // 栈
@@ -79,4 +91,20 @@ impl<T, U> Point2<T, U> {
 enum TResult<T, E> {
     OK(T),
     Err(E),
+}
+
+#[derive(Debug)]
+struct Point3<T, U> {
+    x: T,
+    y: U,
+}
+
+impl<T: Copy, U: Copy> Point3<T, U> {
+       // 这个 self 有&
+       fn creat_point<V, W: Copy>(&self, other: &Point3<V, W>) -> Point3<W, T> {
+        Point3 {
+            x: other.y,
+            y: self.x,
+        }
+    } 
 }

@@ -62,14 +62,41 @@ fn print_information2<T: GetInformation>(item: &T) {
     println!("T name: {}, age: {}", item.get_name(), item.get_age());
 }
 
+// 第一种写法
 fn print_information3<T: GetInformation + School>(item: &T) {
     println!("T3fn school: {}, name: {}, age: {}", item.get_school_name(), item.get_name(), item.get_age());
+}
+// 第二种方法 where
+fn print_information4<T>(item: &T) where T: GetInformation + School {
+    println!("4 itme fn school: {}, name: {}, age: {}", item.get_school_name(), item.get_name(), item.get_age());
 }
 
 fn print_school_information(item: impl School) {
     println!("item school name: {}", item.get_school_name());
 }
 
+// 注意这个 impl
+fn produce_item_with_name() -> impl GetInformation {
+    Student{
+        name: String::from("student name"),
+        age: 12,
+    }
+}
+
+fn produce_item_with_name2(p: bool) -> Box<dyn GetInformation> {
+    if p {
+        Box::new(Student{
+            name: String::from("student name"),
+            age: 12,
+        })
+    } else {
+        Box::new(Teacher{
+            name: String::from("teacher"),
+            age: 20,
+        })
+    }
+
+}
 
 fn main() {
     let s = Student{name: "xiao".to_string(), age: 10};
@@ -80,9 +107,17 @@ fn main() {
     print_school_information(s);
     let t = Teacher{name: "da".to_string(), age: 20};
     print_information2(&t);
+    print_information4(&t);
     print_school_information(t);
 
+    let s = produce_item_with_name();
+    println!("s {}", s.get_name());
 
+    let t1 = produce_item_with_name2(false);
+    println!("t1 name {}", t1.get_name());
+
+    let t1 = produce_item_with_name2(true);
+    println!("t1 name {}", t1.get_name());
     println!("Hello, world!");
 }
 /*
