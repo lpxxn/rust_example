@@ -4,6 +4,7 @@ https://kaisery.gitbooks.io/trpl-zh-cn/content/ch01-00-getting-started.html
 
 https://rustwiki.org/zh-CN/rust-by-example/scope/borrow/ref.html
 
+https://wiki.jikexueyuan.com/project/rust-primer/
 
 #### Rust开发crates.io换国内中科大
 ```
