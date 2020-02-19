@@ -18,7 +18,7 @@ fn main() {
     // };
 
     // 也可以这样
-    //let f = File::open("hello.txt").unwrap();
+    let f = File::open("hello.txt").unwrap();
     
     // 这样
     //let f = File::open("hello.txt").expect("abdef");
@@ -38,6 +38,7 @@ fn read_username_from_file() -> Result<String, io::Error> {
     let f = File::open("hello.txt");
     let mut f = match f {
         Ok(file) => file,
+        // 提前return error
         Err(error) => return Err(error),
     };
 
