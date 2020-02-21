@@ -19,4 +19,4 @@ cargo run --release
 cargo doc
 cargo doc --open
 
-cargo test
+cargo test // 在z_6_1_pointer my_1_box里有 test
