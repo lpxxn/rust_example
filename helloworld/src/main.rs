@@ -107,8 +107,23 @@ fn add(a: i32, b: i32) -> i32 {
    a + b
 }
 
+/// 测试文档
+/// cargo doc
+/// cargo doc --open
 fn show(arr: [u32; 3]) {
     for i in &arr {
         println!("{}", i)
     }
+}
+
+/// Add one to the number given
+/// 
+/// #Example
+/// 
+/// ```
+/// let five = 5
+/// assert_eq!(6, add_one(five))
+/// ```
+fn add_one(x: i32) -> i32 {
+    x + 1
 }
