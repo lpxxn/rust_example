@@ -1,6 +1,5 @@
 mod phrases;
 
 fn main() {
-    phrases::hello1();
-    phrases::greetings::hello2();
+    phrases::hello2();// You can call `hello()` directly from phrases
 }
