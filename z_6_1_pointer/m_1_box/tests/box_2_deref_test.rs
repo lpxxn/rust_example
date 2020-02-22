@@ -50,7 +50,7 @@ fn defref_test2() {
          解引用多态与可变性交互
          1. 当T: Deref<Target=U>时，从&T到&U
          2. 当T: DerefMut<Target=U>时，从&mut T 到&mut U
-         3. 当T: DerefMut<Target=U>时，从&mut T到 &U
+         3. 当T: Deref<Target=U>时，从&mut T到 &U
          不能从不可变T到可变U
     */
 
