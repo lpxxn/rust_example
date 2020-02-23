@@ -1,0 +1,13 @@
+[package]
+name = "z_z_postgresql"
+version = "0.1.0"
+authors = ["lpxxn <mi_duo@live.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+postgres = "0.17.1"
+sqlx = {version="0.2", features = ["postgres"] }
+async-std = { version = "1.4.0", features = [ "attributes" ] }
+
