@@ -1,6 +1,8 @@
 use std::sync::{Arc, Mutex};
 use std::thread;
-
+// RefCell<T>/Rc<T> 与 Mutex<T>/Arc<T>
+// Mutex<T> 提供内部可变性，类似于RefCell
+// RefCell<T>/Rc<T>是非线程安全的，Mutex<T>/Arc<T>是线程安全的
 fn main() {
     let counter = Arc::new(Mutex::new(0));
     let mut handles = vec![];
