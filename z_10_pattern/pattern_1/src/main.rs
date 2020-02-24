@@ -11,11 +11,23 @@ fn main() {
     // 1和2 匹配模式x,y
     print_point(&x);
     println!("x: {:?}", x);
+    let x = Some(5);
+    match x {
+        Some(5) => println!("5"),
+        Some(y) => println!("y {}", y),
+        _ => println!("others"),
+    }
+    let x = 1;
+    match x {
+        1|2 => println!("1 or 2"),
+        _ => println!("others"),
+    }
 }
 
 fn print_point(&(x, y): &(i32, i32)) {
     println!("x: {}, y: {}", x, y);
 }
+// 字面值 let x =1; let x="abcdef";
 // 模式有两种：refutable(可反驳的)和irrefutable(不可反驳的)。能匹配任何传递的可能值的模式称
 // 为不可反驳。对值进行匹配可能失败的模式移库可反驳的。
 // 只能接受不可反驳模式的有：函数、let语句、for循环。原因：因为通过不匹配的值程序无法进行工作。
