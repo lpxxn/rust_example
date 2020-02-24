@@ -20,6 +20,8 @@ fn main() {
     let x = 1;
     match x {
         1|2 => println!("1 or 2"),
+        // 这要加=号
+        3..=10 => println!("3..10"),// 3, 4, 5, 6, 7...10
         _ => println!("others"),
     }
 }
