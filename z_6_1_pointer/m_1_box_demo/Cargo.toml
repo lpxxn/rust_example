@@ -1,0 +1,5 @@
+[workspace]
+members = [
+    "m_1_box",
+    "cli"
+]

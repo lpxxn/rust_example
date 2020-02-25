@@ -1,0 +1,15 @@
+//use m_1_box;
+// 实际测试不用 extern
+//extern crate m_1_box;
+//use m_1_box;
+// 在代码顶部有一个 extern crate adder。
+// 这是因为在测试目录里测试是一个完全独立的箱，所以我们需要导入我们的函数库。
+// 这也是为什么 tests 是一个编写集成风格测试的合适的地方：他们使用函数库和其他消费者。
+// importing common mod
+
+#[test]
+fn myfirst_test() {
+    println!("cli myfirst_test ---------");
+
+    m_1_box::my_box::new_box();
+}
