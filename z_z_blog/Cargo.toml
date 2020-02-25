@@ -1,0 +1,5 @@
+[workspace]
+members = [
+    "blog",
+    "log_server",
+]
