@@ -81,11 +81,14 @@ struct Change(i32, i32, i32)
 
 impl Message {
     fn print(&self) {
-        match *self {
+        //match *self {
+        match self {
             Message::Quit => println!("Quit"),
             Message::Move{x, y} => println!("Move x = {}, y = {}", x, y),
             Message::Change(a, b, c) => println!("Change a = {}, b = {}, c = {}", a, b, c),
-            Message::Write(ref s) => println!("s = {}", s),
+            Message::Write(s) => println!("s = {}", s),
+            //当 match *self {
+            //Message::Write(ref s) => println!("s = {}", s),
         }
     }
 }
