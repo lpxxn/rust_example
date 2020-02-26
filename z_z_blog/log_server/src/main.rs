@@ -6,7 +6,8 @@ fn main() {
     assert_eq!("", post.content());
     post.request_review();
     assert_eq!("", post.content());
-    post.approve();
+    let approve = post.approve();
+    let approve2 = post.approve();
     assert_eq!(str1, post.content());
     
     println!("post: {}", post.content());

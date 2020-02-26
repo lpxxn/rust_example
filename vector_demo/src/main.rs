@@ -28,11 +28,11 @@ fn main() {
     // }
     // value borrowed here after move
     // println!("v = {:?}", v);
-    
+
     for ele in &v {
         println!("ele = {}", ele);
     }
-    
+
     // 修改
     for ele in &mut v {
         *ele += 1
@@ -51,7 +51,7 @@ fn main() {
     let c = vec![
         Context::Text(String::from("hello")),
         Context::Int(12),
-        Context::Float(2.0)
+        Context::Float(2.0),
     ];
 
     //
@@ -61,10 +61,28 @@ fn main() {
     println!("first = {}", first);
     first += 22;
     println!("v = {:?}", v);
+
+    let sv = vec![
+        "a".to_string(),
+        "bde".to_string(),
+        "adljei".to_string(),
+        "de".to_string(),
+    ];
+    let max = sv.iter().max_by_key(|s| s.len()).unwrap();
+    println!("max {}", max);
+    let max = sv.iter().max().unwrap();
+    println!("max {}", max);
+    //let _: () = max.len();
+    //let _: () = f64::ceil(max.len() / 2);
+    let a = max.len() as i32 % 2;
+    let a = (5 as f64 / 2 as f64).ceil() as i32;
+    println!("a {}", a);
+    println!("{}", "*".repeat((2.5 as f32).ceil() as usize));
+    // let _: () = a; i32
 }
 
 /*
-rust   move   borrowing  
+rust   move   borrowing
 我有下面的Rust程序。
 
 fn main() {

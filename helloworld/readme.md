@@ -8,7 +8,9 @@ cargo check [检查代码]
 
 [cargo fmt 格式化代码](https://github.com/rust-lang/rustfmt)
 
-
+### rustc
+rustc --out-dir ./target strategy_pattern.rs 
+ 
 ### release
 cargo build --release
 ./target/release/helloworld 
