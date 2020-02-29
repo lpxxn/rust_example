@@ -51,6 +51,7 @@ impl State for Published {
     }
 
     fn content<'a>(&self, post: &'a Post) -> &'a str {
+        //let _: () = post; expected `()`, found `&blog::Post`
         &post.content
     }
 }
