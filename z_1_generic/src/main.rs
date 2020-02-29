@@ -108,3 +108,22 @@ impl<T: Copy, U: Copy> Point3<T, U> {
         }
     } 
 }
+
+struct Foo<T: ?Sized> {
+    a: Box<T>,
+}
+struct Foo2 {
+    fo: Foo<Fn(i32)>
+}
+/*
+可以看到编译器提示:Fn(i32)没有实现Sized
+这个要从编译器的默认行为说起
+1. 编译器默认struct Foo<T>这种定义都要求T是Sized，也就是这个类型有固定的长度，比如i32，u64之类的
+2. 有几种类型长度不固定，其中之一就是trait类型，因为可能存在多种类型都可以实现某个trait，这样把trait作为类型T的时候编译器无法知道可能传递过来的实现这个trait的类型的size，从另一个意义上来说实现某个trait的类型的长度不是固定的。
+3. 我们这儿把Fn(i32)作为类型T传递给Foo，很明显可能存在很多种类型可以实现Fn(i32)这个trait，所以Fn(i32)长度并不固定。但从1来看编译器默认是认为Foo是需要一个Sized的类型T
+
+解决这个问题其实很简单，因为Foo里的a,b都是保存的Box<T>也就是说T的长度是否固定并不重要，所以我们不需要编译器默认给我们强加的T必须Sized这个规定，修改定义即可：struct Foo<T:?Sized>这也就是告诉编译器Foo<T>可以接收Sized或者不是Sized的类型都可以，这样Fn(i32)就可以了
+————————————————
+版权声明：本文为CSDN博主「varding」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/varding/article/details/48326341
+*/
