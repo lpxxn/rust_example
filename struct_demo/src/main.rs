@@ -22,9 +22,24 @@ fn main() {
         ..p1
     };
     println!("p3 {:?}", p3);
+    let s: SomeOptions = Default::default();
+    println!("s: {:?}", s);
 }
 
 #[derive(Debug)]
 struct ImportantExcerpt<'a> {
     part: &'a str,
+}
+
+trait A {
+    fn print(&self);
+}
+#[derive(Default, Debug)]
+struct SomeOptions {
+    i: i32,
+    s: String,
+    v: Vec<i32>,
+    oS: Option<String>,
+    // o: Option<T>,
+    // b: Box<dyn A>,
 }
