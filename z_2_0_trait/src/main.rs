@@ -12,10 +12,9 @@ trait School {
     }
 }
 
-
 #[derive(Debug)]
 pub struct Student {
-    pub name : String,
+    pub name: String,
     pub age: i32,
 }
 
@@ -37,7 +36,7 @@ impl School for Student {
 
 #[derive(Debug)]
 pub struct Teacher {
-    pub name : String,
+    pub name: String,
     pub age: i32,
 }
 
@@ -50,9 +49,7 @@ impl GetInformation for Teacher {
         self.age
     }
 }
-impl School for Teacher {
-    
-}
+impl School for Teacher {}
 
 fn print_information(item: &impl GetInformation) {
     println!("items name: {}, age: {}", item.get_name(), item.get_age());
@@ -64,11 +61,24 @@ fn print_information2<T: GetInformation>(item: &T) {
 
 // 第一种写法
 fn print_information3<T: GetInformation + School>(item: &T) {
-    println!("T3fn school: {}, name: {}, age: {}", item.get_school_name(), item.get_name(), item.get_age());
+    println!(
+        "T3fn school: {}, name: {}, age: {}",
+        item.get_school_name(),
+        item.get_name(),
+        item.get_age()
+    );
 }
 // 第二种方法 where
-fn print_information4<T>(item: &T) where T: GetInformation + School {
-    println!("4 itme fn school: {}, name: {}, age: {}", item.get_school_name(), item.get_name(), item.get_age());
+fn print_information4<T>(item: &T)
+where
+    T: GetInformation + School,
+{
+    println!(
+        "4 itme fn school: {}, name: {}, age: {}",
+        item.get_school_name(),
+        item.get_name(),
+        item.get_age()
+    );
 }
 
 fn print_school_information(item: impl School) {
@@ -77,7 +87,7 @@ fn print_school_information(item: impl School) {
 
 // 注意这个 impl
 fn produce_item_with_name() -> impl GetInformation {
-    Student{
+    Student {
         name: String::from("student name"),
         age: 12,
     }
@@ -85,27 +95,32 @@ fn produce_item_with_name() -> impl GetInformation {
 
 fn produce_item_with_name2(p: bool) -> Box<dyn GetInformation> {
     if p {
-        Box::new(Student{
+        Box::new(Student {
             name: String::from("student name"),
             age: 12,
         })
     } else {
-        Box::new(Teacher{
+        Box::new(Teacher {
             name: String::from("teacher"),
             age: 20,
         })
     }
-
 }
 
 fn main() {
-    let s = Student{name: "xiao".to_string(), age: 10};
+    let s = Student {
+        name: "xiao".to_string(),
+        age: 10,
+    };
     println!("s name: {}, age: {}", s.get_name(), s.get_age());
     print_information(&s);
     println!("school {}", s.get_school_name());
     print_information3(&s);
     print_school_information(s);
-    let t = Teacher{name: "da".to_string(), age: 20};
+    let t = Teacher {
+        name: "da".to_string(),
+        age: 20,
+    };
     print_information2(&t);
     print_information4(&t);
     print_school_information(t);
@@ -119,9 +134,18 @@ fn main() {
     let t2 = produce_item_with_name2(true);
     println!("t2 name {}", t2.get_name());
 
-    let s = Student{name: "xiao".to_string(), age: 10};
-    let t = Teacher{name: "da".to_string(), age: 20};
-    let p = PeopleMatchInfomation{master: s, student: t};
+    let s = Student {
+        name: "xiao".to_string(),
+        age: 10,
+    };
+    let t = Teacher {
+        name: "da".to_string(),
+        age: 20,
+    };
+    let p = PeopleMatchInfomation {
+        master: s,
+        student: t,
+    };
     p.print_all_information();
 
     println!("Hello, world!");
@@ -140,9 +164,19 @@ struct PeopleMatchInfomation<T, U> {
     student: U,
 }
 
-impl<T: GetInformation+School, U: GetInformation+School> PeopleMatchInfomation<T, U> {
+impl<T: GetInformation + School, U: GetInformation + School> PeopleMatchInfomation<T, U> {
     fn print_all_information(&self) {
-        println!("master name {}, age {}, school {}", self.master.get_name(), self.master.get_age(), self.master.get_school_name());
-        println!("student name {}, age {}, school {}", self.student.get_name(), self.student.get_age(), self.student.get_school_name());
+        println!(
+            "master name {}, age {}, school {}",
+            self.master.get_name(),
+            self.master.get_age(),
+            self.master.get_school_name()
+        );
+        println!(
+            "student name {}, age {}, school {}",
+            self.student.get_name(),
+            self.student.get_age(),
+            self.student.get_school_name()
+        );
     }
 }
