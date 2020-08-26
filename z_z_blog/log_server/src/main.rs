@@ -9,6 +9,6 @@ fn main() {
     let approve = post.approve();
     let approve2 = post.approve();
     assert_eq!(str1, post.content());
-    
+
     println!("post: {}", post.content());
 }

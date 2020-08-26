@@ -31,7 +31,7 @@ use std::borrow::Borrow;
 
 fn main() {
     let a = Rc::new(Cons(1, RefCell::new(Weak::new())));
-    println!("1, a strong coutn = {}, weak count = {}", Rc::strong_count(&a), Rc::weak_count(&a));
+    println!("1, a strong count = {}, weak count = {}", Rc::strong_count(&a), Rc::weak_count(&a));
     println!("1, a tail = {:?}", a.tail());
 
     {
