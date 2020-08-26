@@ -16,7 +16,7 @@ fn main() {
         print!("r1: {}", *r1);
         print!("r2: {}", *r2);
     }
-    // let a = 0x1234usize;
+    let a = 0x1234usize;
     // let r = add as *const i32;
     println!("{}", a);
 }

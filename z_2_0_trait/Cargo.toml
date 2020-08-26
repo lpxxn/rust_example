@@ -10,6 +10,7 @@ edition = "2018"
 name = "self_demo"
 path = "./self.rs"
 
+# cargo run --bin self_demo2
 [[bin]]
 name = "self_demo2"
 path = "./self2.rs"
