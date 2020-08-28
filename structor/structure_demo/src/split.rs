@@ -1,4 +1,4 @@
-mod protocol
+mod protocol;
 
 fn function() {
     
