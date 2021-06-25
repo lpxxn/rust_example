@@ -17,3 +17,15 @@ registry = "git://mirrors.ustc.edu.cn/crates.io-index"
 EOF
 
 ```
+
+### update
+```
+rustup -V
+rustc -V
+
+rustup update
+rustup self update
+rustup self upgrade-data
+rustup -V
+rustc -V
+```
