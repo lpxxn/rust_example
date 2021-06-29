@@ -18,6 +18,13 @@ EOF
 
 ```
 
+## doc
+
+```
+rustup doc
+rustup docs --book
+```
+
 ### update
 ```
 rustup -V
