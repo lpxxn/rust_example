@@ -22,7 +22,7 @@ fn main () {
 
     struct Impl2<'a> {
         next: Option<&'a dyn Bar2>
-    };
+    }
     impl<'a> Bar2 for Impl2<'a> {
         fn my(&self) -> &Self    {
             self
