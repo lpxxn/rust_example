@@ -38,7 +38,7 @@
 # .idea/modules
 # *.iml
 # *.ipr
-
+vendor/
 # CMake
 cmake-build-*/
 
