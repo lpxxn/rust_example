@@ -54,4 +54,24 @@ fn main() {
     for b in s3.bytes() {
         println!("b {}", b);
     }
+
+    // https://doc.rust-lang.org/reference/tokens.html#raw-string-literals
+    let shader = r#"
+    #version 330
+
+    in vec4 v_color;
+    out vec4 color;
+
+    void main() {
+        color = v_color;
+    };
+"#;
+    // If you have sequences of double quotes and hash symbols within your string, you can denote an arbitrary number of hashes as a delimiter:
+    let crazy_raw_string = r###"
+    My fingers #"
+    can#"#t stop "#"" hitting
+    hash##"#
+"###;
+    println!("{}", shader);
+    println!("{}", crazy_raw_string);
 }
