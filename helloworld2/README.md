@@ -5,7 +5,7 @@ cargo search rand
 cargo update update Update dependencies listed in Cargo.lock 只会在 Cargo.lock 里更新依赖信息。 只有在 build的时候才会具体执行
 
 竟然有 `vendor` 命令
-
+`cargo --help`里没有 `vendor`的说明，在`cargo --list`里
 ```
 cargo vendor --help 
 cargo help vendor
