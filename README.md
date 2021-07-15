@@ -17,6 +17,10 @@ registry = "git://mirrors.ustc.edu.cn/crates.io-index"
 EOF
 
 ```
+或者这个
+```
+https://rsproxy.cn/
+```
 
 ## doc
 
