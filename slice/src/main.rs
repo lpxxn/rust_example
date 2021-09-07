@@ -8,7 +8,8 @@ fn main() {
     println!("s3 = {}", s3);
     let s3 = &str1[..];
     println!("s3 = {}", s3);
-
+    let s4 = &str1[..str1.len()];
+    println!("s4 = {}", s4);
     // 字面值是slice 也就是(&str) 并且不可变
     let s4 = "abc";
 
