@@ -24,4 +24,21 @@ fn main() {
     let zs1 = &z[0..1];
     */
     
+    let mut s = String::from("Hello world");
+    // first_world里的&s 为不可变。
+    let word_index = first_world(&s);
+    // 就不能可变了
+    //s.clear();
+    println!("{}", word_index);
+
+}
+
+fn first_world(s: &String) -> &str {
+    let bytes = s.as_bytes();
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[..i]
+        }
+    }
+    &s[..]
 }
