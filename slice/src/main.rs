@@ -33,6 +33,8 @@ fn main() {
     //s.clear();
     println!("{}", word_index);
 
+    std::io::stdin().read_line(&mut s).expect("msg: &str");
+
 }
 
 //fn first_world(s: &String) -> &str {

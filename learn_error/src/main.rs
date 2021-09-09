@@ -9,6 +9,7 @@ enum Resutl<T, E> {
 use std::io;
 use std::io::Read;
 use std::fs::File;
+use std::ops
 fn main() {
     // let f = File::open("hello.txt");
 
@@ -66,7 +67,7 @@ fn read_username_from_file2() -> Result<String, io::Error> {
 
 fn read_username_from_file3() -> Result<String, io::Error> {
     let mut s = String::new();
-    let mut f = File::open("hello.txt")?.read_to_string(&mut s)?;
+    File::open("hello.txt")?.read_to_string(&mut s)?;
     Ok(s)
 } 
 
