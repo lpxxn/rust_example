@@ -19,7 +19,9 @@ fn main() {
 fn largest<T: PartialOrd + Clone>(list: &[T]) -> T {
     let mut largest = list[0].clone();
     for item in list.iter() {
-        if largest < *item {
+        if &largest < item {
+        // 或者
+        //if largest < *item {
             largest = item.clone();
         }
     }

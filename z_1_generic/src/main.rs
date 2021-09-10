@@ -123,7 +123,4 @@ struct Foo2 {
 3. 我们这儿把Fn(i32)作为类型T传递给Foo，很明显可能存在很多种类型可以实现Fn(i32)这个trait，所以Fn(i32)长度并不固定。但从1来看编译器默认是认为Foo是需要一个Sized的类型T
 
 解决这个问题其实很简单，因为Foo里的a,b都是保存的Box<T>也就是说T的长度是否固定并不重要，所以我们不需要编译器默认给我们强加的T必须Sized这个规定，修改定义即可：struct Foo<T:?Sized>这也就是告诉编译器Foo<T>可以接收Sized或者不是Sized的类型都可以，这样Fn(i32)就可以了
-————————————————
-版权声明：本文为CSDN博主「varding」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
-原文链接：https://blog.csdn.net/varding/article/details/48326341
 */
