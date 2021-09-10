@@ -8,5 +8,5 @@ fn main() {
         username: String::from("zhang san"),
         content: String::from("content")
     };
-    println!("summary: {}", tweet.summary())
+    println!("summary: {} \n about: {}", tweet.summary(), tweet.about())
 }

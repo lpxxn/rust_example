@@ -1,5 +1,9 @@
 pub trait Summary {
     fn summary(&self) -> String;
+    // 默认实现
+    fn about(&self) -> String {
+        String::from("hello world")
+    }
 }
 pub struct NewsArticle {
     pub head_line: String,
