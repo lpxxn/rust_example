@@ -8,6 +8,7 @@ trait Iterator {
     // next 是Iterator 被要求实现的唯一的方法，next一次返回一个元素，当迭代器结束时，返回None
 }
 */
+use std::collections::HashMap;
 
 fn main() {
     let v1 = vec![1, 2, 3];
@@ -51,12 +52,15 @@ fn main() {
     println!("v1: {:?}", v1);
     let v2: Vec<_> = v1.iter().map(|x| x + 1).collect();
     println!("v2: {:?}", v2);
+    println!("v1: {:?}", v1);
 
     let v2: Vec<_> = v1.into_iter().filter(|x| *x > 5).collect();
     println!("v2: {:?}", v2);
+    // err into_iter `v1` moved
+    //println!("v1: {:?}", v1);
 
     let mut c = Counter::new();
-    for i in (0..6) {
+    for i in 0..6 {
         if let Some(v) = c.next() {
             println!("i {}, v {}", i, v);
         } else {
@@ -64,6 +68,7 @@ fn main() {
             break;
         }
     }
+    using_other_iterator_trait_methods();
 }
 
 /*
@@ -97,4 +102,19 @@ impl Iterator for Counter {
             None
         }
     }
+}
+
+
+fn using_other_iterator_trait_methods() {
+    let a_zip = Counter::new().zip(Counter::new().skip(1));
+    // let a_vec: Vec<_> = a_zip.collect();
+    // for item in a_vec {
+    //     println!("{}, {}", item.0, item.1)
+    // }
+
+    let a_vec: HashMap<_, _> = a_zip.collect();
+    for (key, v) in a_vec {
+        println!("{}, {}", key, v)
+    }
+    
 }
