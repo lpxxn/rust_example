@@ -10,7 +10,7 @@ fn main() {
     let e = E {
         a: "fn_once".to_string(),
     };
-    // 这样加个move，看看程序执行输出顺序有什么不同
+    // 这样加个move，看看程序执行输出顺序有什么不同, move 有解释在下面
     //let f = move || println!("fn once calls: {:?}", e);
     let f = || println!("fn once closure calls: {:?}", e);
     fn_once(f);
@@ -38,6 +38,9 @@ fn main() {
 
     println!("main ended");
     // https://www.dazhuanlan.com/2019/12/09/5dee50f786c92/
+    /* 最佳家实践
+    当指定Fn trait bound之一时，首先用Fn，基于闭包体里的情况，如果需要FnOnce或者FnMut，编译器会再告诉你。
+    */
 }
 
 /* 闭包可以通过三种方式捕获其环境，他们对应函数的三种获取参数的方式: 获取所有权、可恋借用、不可变借用。
@@ -120,3 +123,8 @@ where
     func();
     func();
 }
+
+/*
+move 在参数列表前使用move关键字，可以强制闭包取得它所使用的环境值的所有权
+- 当将闭包传递给新纯种以移动数据使其归新线程所有时，此技术最为有用
+*/
