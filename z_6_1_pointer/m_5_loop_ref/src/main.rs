@@ -40,7 +40,7 @@ fn main() {
     // 调用 tail() 造成无限死循环
     // a的Cons 引用的 b， b的Cons引用的 a
     // 输出时 无限输出 a、b、a、b、a、b。。。。。
-    //println!("1, a tail= {:?}", a.tail());
+    println!("1, a tail= {:?}", a.tail());
 
 }
 
