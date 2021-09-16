@@ -34,3 +34,35 @@ fn str_add(s: &mut String) {
 // 引用 & 指向变量的地址，并不拥有它，所以引用离开其值指向的作用域后也不会被
 // 丢弃
 // 借用 &mut 只能有一个可写
+
+
+
+struct A;
+struct B;
+impl Deref for A {
+    type Target = B;
+    fn deref(&self) -> &Self::Target {
+        let x = &B;
+        return x
+    }
+}
+
+fn foo(a: A) -> Option<()> {
+    let v = &&a;
+    bar(v);
+    bar(&&a);
+    bar((&a).deref());
+    Some(())
+}
+
+fn foo2(a: Option<A>) -> Option<()> {
+    let v = &&a?;
+    bar(v);
+    bar(&&a?);
+    bar((&a).deref());
+    Some(())
+}
+
+fn bar(b: &B) {
+
+}
