@@ -43,7 +43,6 @@ fn foo(a: A) -> Option<()> {
     bar((&a).deref());
     bar(&*(&a));
 
-
     let a1 = &a;
     bar(a1.deref());
     Some(())
@@ -62,3 +61,4 @@ impl A {
 // fn get_b() -> &B {
 //     &B
 // }
+
