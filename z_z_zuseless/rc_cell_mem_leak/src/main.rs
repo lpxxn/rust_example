@@ -8,6 +8,7 @@ enum List {
 }
 
 use crate::List::{Cons, Nil};
+use std::borrow::Borrow;
 
 impl List {
     fn tail(&self) -> Option<&RefCell<Weak<List>>> {
@@ -45,11 +46,37 @@ fn main() {
         //println!("---{:?}", r);
         t = r;
     }
+    println!("---------------");
     for _ in 1..=5 {
         println!("---{:?}", t);
         if let Some(l) = t.tail() {
             let r = l.borrow().upgrade().unwrap();
             t = r;
         }
+    }
+
+    let mut d: Option<Rc<List>> = None;
+    if let Some(l) = a.tail() {
+        d = l.borrow().upgrade();
+    }
+    println!("---------------");
+    for _ in 1..=5 {
+        println!("---{:?}", d);
+        if let Some(x) = &d {
+            if let Some(l) = x.tail() {
+                let v = l.borrow().upgrade();
+                // 直接这样就报错
+                //d = l.borrow().upgrade();
+                d = v
+            }
+        }
+        //  match t {
+        //      Some(x) => {
+        //          if let Some(z) = x.tail() {
+        //              t = z.borrow().upgrade();
+        //          }
+        //      }
+        //      _ =>{}
+        // }
     }
 }
