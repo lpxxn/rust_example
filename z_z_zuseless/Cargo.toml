@@ -1,5 +1,6 @@
 [workspace]
 members = [
     "rc_demo1",
-    "rc_cell_demo1"
+    "rc_cell_demo1",
+    "rc_cell_mem_leak"
 ]

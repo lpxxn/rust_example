@@ -22,7 +22,7 @@ mod tests {
         let a = Cons(Rc::clone(&value), Rc::new(Nil));
 
         *value.borrow_mut() += 10;
-        match a {
+        match &a {
             Cons(a, b) => {
                 let b:&RefCell<i32> = a.borrow();
                 println!("value: {}", b.borrow())
@@ -32,6 +32,8 @@ mod tests {
             }
         }
         *value.borrow_mut() += 10;
+
+        println!("a: {:?}", a);
     }
 
     #[test]
