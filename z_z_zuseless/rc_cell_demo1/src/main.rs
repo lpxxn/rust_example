@@ -6,7 +6,6 @@ fn main() {
     let mut limit = LimitTracker::new(&mock_msg, 5);
     limit.set_value(10);
 
-
     for m in mock_msg.send_msg.borrow().iter() {
         println!("msg: {}", m)
     }
