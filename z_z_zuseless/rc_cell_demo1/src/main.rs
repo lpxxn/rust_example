@@ -1,7 +1,6 @@
 use std::cell::RefCell;
 
 fn main() {
-    println!("Hello, world!");
     let mock_msg = MockMsg::new();
     let mut limit = LimitTracker::new(&mock_msg, 5);
     limit.set_value(10);
