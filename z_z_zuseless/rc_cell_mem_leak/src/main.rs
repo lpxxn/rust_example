@@ -79,7 +79,7 @@ fn main() {
     println!("---------------");
     for _ in 1..=5 {
         println!("---{:?}", d);
-        if let Some(x) = &d {
+        if let Some(x) = d {
             if let Some(l) = x.tail() {
                 let v = l.borrow().upgrade();
                 // 直接这样就报错 cannot assign to `d` because it is borrowed
