@@ -34,6 +34,7 @@ directory = "vendor"
 mkdir .cargo
 cargo vendor > .cargo/config
 ```
+https://benjamincongdon.me/blog/2019/12/04/Fast-Rust-Docker-Builds-with-cargo-vendor/
 
 vi create direcotry
 Another way with a vanilla Vim (without extra conf or plugins). in Vim:
