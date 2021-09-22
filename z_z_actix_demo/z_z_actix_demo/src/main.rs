@@ -17,7 +17,7 @@ struct Info2 {
     // 这样也可以，如果都指定了，会按下面这个为准
     // #[serde(rename = "y")]
     my_addr: String,
-    #[serde(default)]
+    #[serde(default, rename="a")]
     age: i32,
 }
 
