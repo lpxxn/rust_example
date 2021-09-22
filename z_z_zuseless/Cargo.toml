@@ -2,5 +2,7 @@
 members = [
     "rc_demo1",
     "rc_cell_demo1",
-    "rc_cell_mem_leak"
+    "rc_cell_mem_leak",
+    "block_expression1",
+    "ownership_demo1"
 ]

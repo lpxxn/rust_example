@@ -58,12 +58,13 @@ fn main() {
     if let Some(l) = a.tail() {
         d = l.borrow().upgrade();
     }
-    println!("---------------");
-    for _ in 1..=5 {
+    println!("-------1--------");
+    for _ in 1..=1 {
         println!("---{:?}", d);
         d = {
             let mut v: Option<Rc<List>> = None;
             if let Some(x) = d {
+                print_type_name_of(&x);
                 if let Some(l) = x.tail() {
                     v = l.borrow().upgrade();
                 }
@@ -76,10 +77,12 @@ fn main() {
     if let Some(l) = a.tail() {
         d = l.borrow().upgrade();
     }
-    println!("---------------");
-    for _ in 1..=5 {
+    println!("-------2--------");
+    for _ in 1..=1 {
         println!("---{:?}", d);
-        if let Some(x) = d {
+        if let Some(x) = &d {
+            print_type_name_of(&x);
+
             if let Some(l) = x.tail() {
                 let v = l.borrow().upgrade();
                 // 直接这样就报错 cannot assign to `d` because it is borrowed
@@ -107,4 +110,8 @@ fn main() {
         };
         d = x;
     }
+}
+
+fn print_type_name_of<T>(_: T) {
+    println!("type: {}", std::any::type_name::<T>())
 }
