@@ -3,7 +3,8 @@ fn main() {
     for _ in 1..=1 {
         s1 = {
             let mut new_s :Option<String> = None;
-            if let Some(ref s) = s1 {
+            // 因为已经给s1赋值了，所以这里ref 或者 &s1也没啥用了
+            if let Some(s) = s1 {
                 println!("{}", s);
                 new_s = Some(format!("{} world", s))
             }
