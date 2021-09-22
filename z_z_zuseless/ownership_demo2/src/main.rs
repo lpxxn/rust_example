@@ -2,14 +2,12 @@ fn main() {
     let mut s1: Option<String> = Some(String::from("hello"));
     for _ in 1..1 {
         s1 = {
-            match s1 {
-                Some(s) => {
-                    Some(String::from(s))
-                }
-                _ => {
-                    None
-                }
+            let mut new_s :Option<String> = None;
+            if let Some(ref s) = s1 {
+                println!("{}", s);
+                new_s = Some(String::from(s))
             }
+            new_s
         }
     }
 
