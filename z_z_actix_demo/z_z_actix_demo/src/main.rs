@@ -11,7 +11,7 @@ struct Info {
 #[serde(rename_all = "camelCase")]
 struct Info2 {
     username: String,
-    // 这样也可以
+    // 这样也可以，如果都指定了，会按下面这个为准
     // #[serde(rename = "y")]
     my_addr: String,
 }
