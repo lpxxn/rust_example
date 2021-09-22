@@ -39,6 +39,11 @@ fn main() {
     str_borrow_test1(s1);
     // s1 moved  value borrowed here after move
     //println!("s1 : {}", s1);
+
+
+    let v1 = vec![1, 2, 3];
+    vec_borrow_test1(&v1);
+    println!("{:?}", v1);
 }
 
 fn str_borrow_test1(str1: String) {
@@ -51,3 +56,10 @@ fn i32_borow_test1(i: i32) {
 
 // 编译时类型大小是固定的，就分配到栈上
 // 类型大小不是固定的，分配到堆上
+
+// if have no & will be move
+fn vec_borrow_test1(v: &Vec<i32>) {
+    for &item in v.iter() {
+        println!("{}", item)
+    }
+}
