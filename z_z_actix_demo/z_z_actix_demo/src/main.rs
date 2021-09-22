@@ -1,5 +1,6 @@
 use actix_web::{middleware::Logger, error, get, post, web, App, HttpResponse, HttpServer, Responder, Result};
 use serde::{Serialize, Deserialize, Deserializer};
+use log::{debug, error, log_enabled, info, Level};
 // https://github.com/serde-rs/json
 #[derive(Deserialize)]
 struct Info {
@@ -14,6 +15,8 @@ struct Info2 {
     // 这样也可以，如果都指定了，会按下面这个为准
     // #[serde(rename = "y")]
     my_addr: String,
+    #[serde(default)]
+    age: i32,
 }
 
 /// extract path info using serde
@@ -27,7 +30,7 @@ async fn index(info: web::Path<Info>) -> Result<String> {
 
 #[post("/idx2")]
 async fn index2(info: web::Json<Info2>) -> impl Responder {
-    println!("Welcome {} addr: {}!", info.username, info.my_addr);
+    println!("Welcome {} addr: {} age: {}!", info.username, info.my_addr, info.age);
     HttpResponse::Ok().body("Hello world!")
 }
 
@@ -50,11 +53,15 @@ async fn manual_hello() -> impl Responder {
 async fn main() -> std::io::Result<()> {
     let person = Info2 {
         username: "a".to_string(),
-        my_addr: "add".to_string()
+        my_addr: "add".to_string(),
+        age: 2
     };
-
     let json = serde_json::to_string_pretty(&person).unwrap();
     println!("{}", json);
+
+    std::env::set_var("RUST_LOG", "actix_web=info");
+    env_logger::init();
+
 
     HttpServer::new(|| {
         let json_config = web::JsonConfig::default()
@@ -65,7 +72,7 @@ async fn main() -> std::io::Result<()> {
             });
         App::new()
             .wrap(Logger::default())
-            .wrap(Logger::new("%a %{User-Agent}i"))
+            //.wrap(Logger::new("%a %{User-Agent}i"))
             .service(hello)
             .service(echo)
             .service(index)
@@ -85,7 +92,7 @@ curl -i --request POST 'http://127.0.0.1:8880/idx2' \
 "username": "a",
 "myAddr": "add"
 }'
-
+// 如果传的参数不匹配会 409
 You can use Option<T> as the type for a field to have it be optional. If a field is missing during deserialization, the field is set to None, otherwise it is set to Some(value).
 
 #[derive(Deserialize)]
