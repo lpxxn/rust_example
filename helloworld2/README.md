@@ -29,6 +29,12 @@ directory = "vendor"
 这样在 `cargo build `时就会再重新下载，
 在`cargo clean`后也不用再担心重新下载的问题了
 
+或者直接这样，就不需要自己创建了
+```
+mkdir .cargo
+cargo vendor > .cargo/config
+```
+
 vi create direcotry
 Another way with a vanilla Vim (without extra conf or plugins). in Vim:
 
