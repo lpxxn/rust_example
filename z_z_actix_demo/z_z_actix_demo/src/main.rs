@@ -33,20 +33,21 @@ async fn index(info: web::Path<Info>) -> Result<String> {
 #[derive(Serialize)]
 struct Country {
     country_code: String,
-    country_name: String
+    country_name: String,
 }
 
 #[post("/idx2")]
 async fn index2(info: web::Json<Info2>) -> impl Responder {
     println!("Welcome {} addr: {} age: {}!", info.username, info.my_addr, info.age);
-    let mut vec:Vec<Country> = Vec::new();
-    vec.push(Country{country_code: "PH".to_string(), country_name: "Philippines".to_string()});
-    vec.push(Country{country_code: "MY".to_string(), country_name: "Malaysia".to_string()});
-    vec.push(Country{country_code: "ID".to_string(), country_name: "Indonesia".to_string()});
-    let mut m :HashMap<String, Vec<Country>> = HashMap::new();
+    let mut vec: Vec<Country> = Vec::new();
+    vec.push(Country { country_code: "PH".to_string(), country_name: "Philippines".to_string() });
+    vec.push(Country { country_code: "MY".to_string(), country_name: "Malaysia".to_string() });
+    vec.push(Country { country_code: "ID".to_string(), country_name: "Indonesia".to_string() });
+    let mut m: HashMap<String, Vec<Country>> = HashMap::new();
     m.insert("data".to_string(), vec);
-   // let m = ("body", vec);
-    return web::Json(m);
+    // let m = ("body", vec);
+    //return web::Json(m);
+    HttpResponse::Ok().json(m)
 }
 
 
@@ -69,7 +70,7 @@ async fn main() -> std::io::Result<()> {
     let person = Info2 {
         username: "a".to_string(),
         my_addr: "add".to_string(),
-        age: 2
+        age: 2,
     };
     let json = serde_json::to_string_pretty(&person).unwrap();
     println!("{}", json);
