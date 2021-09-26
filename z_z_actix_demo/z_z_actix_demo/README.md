@@ -17,3 +17,9 @@ curl --location --request POST 'http://test3-cafeteria.meican.com/users/login' \
 "username": "cashierT",
 "password": "C.123456"
 }'
+
+
+https://github.com/dtolnay/cargo-expand
+```
+cargo expand > expand.rs 
+```
