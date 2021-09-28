@@ -66,3 +66,8 @@ info: using existing install for 'nightly'
 info: default toolchain set to 'nightly'
 
   nightly unchanged: rustc 1.9.0-nightly (02310fd31 2016-03-19)
+
+
+## vscode 
+如果"Error: Couldn't start client Rust Language Server
+    "rust-client.channel": "stable"
