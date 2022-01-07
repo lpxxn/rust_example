@@ -9,7 +9,7 @@ enum Resutl<T, E> {
 use std::io;
 use std::io::Read;
 use std::fs::File;
-use std::ops
+use std::ops;
 fn main() {
     // let f = File::open("hello.txt");
 
