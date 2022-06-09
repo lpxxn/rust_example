@@ -67,6 +67,11 @@ info: default toolchain set to 'nightly'
 
   nightly unchanged: rustc 1.9.0-nightly (02310fd31 2016-03-19)
 
+## 
+https://github.com/sunface/rust-by-practice
+mdbook serve -p 3001 zh-CN
+mdbook serve
+https://github.com/sunface/rust-course
 
 ## vscode 
 如果"Error: Couldn't start client Rust Language Server
