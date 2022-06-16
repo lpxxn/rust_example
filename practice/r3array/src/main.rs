@@ -13,6 +13,10 @@ fn main() {
         println!("{}", v);
     }
 
+    for v in &mut a2 {
+        *v = v.replace("aaa", "bbb");
+    }
+    println!("---------");
     for v in &a2 {
         println!("{}", v);
     }
