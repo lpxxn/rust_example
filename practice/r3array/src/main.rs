@@ -21,6 +21,10 @@ fn main() {
         println!("{}", v);
     }
     println!("index: {}", a2[2]);
+    // 想要索引和值一起得到
+    for (i, v) in a2.iter().enumerate() {
+        println!("idx: {}, v: {}", i, v);
+    }
 
 }
 

@@ -1,0 +1,1 @@
+cargo run --bin r3array
