@@ -4,5 +4,6 @@ members =[
   "helloword2",
   "r3struct1",
   "r3array",
-  "r4match"
+  "r4match",
+  "r5method"
 ]
