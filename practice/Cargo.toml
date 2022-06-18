@@ -6,5 +6,6 @@ members =[
   "r3array",
   "r4match",
   "r5method",
-  "r6generic"
+  "r6generic",
+  "r7trait"
 ]

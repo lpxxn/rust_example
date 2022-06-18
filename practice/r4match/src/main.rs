@@ -33,7 +33,7 @@ fn main() {
     while_let();
     deconstruction();
     deconstruction2();
-    match_gurard();
+    match_guard();
     match_at_binding();
     match_binding_deconstruction();
 }
@@ -125,7 +125,7 @@ fn deconstruction2() {
     }
 }
 
-fn match_gurard() {
+fn match_guard() {
     // match 里有if条件
     let num = Some(1);
     match num {
