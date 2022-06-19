@@ -41,6 +41,8 @@ fn test_draw() {
     let checkbox = Checkbox;
     draw1(Box::new(&button));
     draw1(Box::new(&checkbox));
+    draw2(&button);
+    draw2(&checkbox);
 
     let screen = Screen{
         components: vec![Box::new(button), Box::new(checkbox)],
@@ -56,7 +58,7 @@ struct Screen {
 impl Screen {
     fn run(&self) {
         for component in self.components.iter() {
-            component.draw();
+            println!("{}",component.draw());
         }
     }
 }
