@@ -64,10 +64,36 @@ fn test_draw() {
 }
 
 // 不参返回 dyn
-// fn get_ele(t: i32) -> (dyn Draw)
+fn get_ele(t: i32) -> Box<dyn Draw> {
+    match t {
+        2 => Box::new(Button{}),
+        _ => Box::new(Checkbox{})
+    }
+}
+
+// fn get_ele2(t: i32) -> impl Draw {
+//     match t {
+//         2 => Button{},
+//         _ => Checkbox{}
+//     }
+// }
+/*
+77 | |         _ => Checkbox{}
+   | |              ^^^^^^^^^^ expected struct `Button`, found struct `Checkbox`
+ */
+
+// fn get_ele2(t: i32) -> (&'static dyn Draw) {
+//     match t {
+//         2 => Button{},
+//         _ => Checkbox{}
+//     }
+// }
+
 
 struct Screen<'a> {
     components: Vec<&'a dyn Draw>,
+    // `impl Trait` not allowed outside of function and inherent method return types
+    //components: Vec<impl Draw>,
 }
 
 impl Screen<'_> {
