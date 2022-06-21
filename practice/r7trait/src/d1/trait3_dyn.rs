@@ -19,6 +19,14 @@ impl MyTrait1 for String{
 fn my_func1(x: impl MyTrait1) -> impl MyTrait1 {
     x.f()
 }
+// 由于
+// fn my_t1(s: bool) -> impl MyTrait1 {
+//     if s {
+//         1_u32
+//     } else {
+//         "abc".to_string()
+//     }
+// }
 
 #[test]
 fn test1() {
@@ -26,7 +34,10 @@ fn test1() {
     my_func1("abc".to_string());
 }
 
-
+/* 特征对象的限制
+- 方法的返回类型不能是 `Self`
+- 方法没有任何泛型参数
+ */
 trait MyTrait2 {
     fn f(&self) -> Box<dyn MyTrait2>;
 }
