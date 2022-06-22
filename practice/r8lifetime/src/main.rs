@@ -7,10 +7,8 @@ fn main() {
     }
 
     println!("result: {}", result);
-    //let result : &str;
     {
-        result = i1.announce_and_return_part2("abc");
-
+        result = i1.announce_and_return_part2("haha");
     }
     println!("result: {}", result);
 }
