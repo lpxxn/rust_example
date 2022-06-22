@@ -7,5 +7,6 @@ members =[
   "r4match",
   "r5method",
   "r6generic",
-  "r7trait"
+  "r7trait",
+  "r8lifetime"
 ]
