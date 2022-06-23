@@ -1,3 +1,5 @@
+mod demo1;
+
 fn main() {
     let s1 = "hello".to_string();
     let mut i1 = ImportantExcerpt{part: &s1[..]};
