@@ -31,11 +31,14 @@ fn testI2() {
     let y = [4, 5, 6];
 
     let z: Vec<_> = x
-        .into_iter()
-        .zip(y.into_iter())
+        .iter()
+        .zip(y.iter())
         .map(|(a, b)| a + b)
         .collect();
-    println!("{:?}", z);
+    println!("2: {:?}", z);
+
+    let z= x.iter().fold(10, |sum, acm| sum + acm);
+    println!("fold: {}", z);
 
     let values = vec![1, 2, 3];
     for v in values.into_iter() {
