@@ -1,3 +1,5 @@
+use std::fmt::Error;
+
 #[test]
 fn testI1() {
     let arr = [1, 2, 3];
@@ -30,6 +32,7 @@ fn testI2() {
     let x = [1, 2, 3];
     let y = [4, 5, 6];
 
+    println!("size hind: {:?}, count: {}", x.iter().size_hint(), x.iter().count());
     let z: Vec<_> = x
         .iter()
         .zip(y.iter())
@@ -39,9 +42,16 @@ fn testI2() {
 
     let z= x.iter().fold(10, |sum, acm| sum + acm);
     println!("fold: {}", z);
-
     let values = vec![1, 2, 3];
     for v in values.into_iter() {
         println!("{}",v)
     }
+
+    type ResultTest<T> = std::result::Result<T, std::io::Error>;
+    let r: ResultTest<_> = std::result::Result::Ok("abcdef");
+    println!("{:?}", r);
+    let r: Result<&str, &str> = std::result::Result::Err("some error message");
+    type ResultTest2<E> = std::result::Result<E, std::io::Error>;
+    let r: Result<&str, &str> = std::result::Result::Err("abcdef");
+    println!("{:?}", r);
 }
