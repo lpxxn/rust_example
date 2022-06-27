@@ -9,5 +9,6 @@ members =[
   "r6generic",
   "r7trait",
   "r8lifetime",
-  "r9iterator"
+  "r9iterator",
+  "r10box"
 ]
