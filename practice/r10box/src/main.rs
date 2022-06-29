@@ -9,6 +9,16 @@ fn main() {
 
     let s = String::from("hello world");
     display(&s);
+
+    let s = MyBox::new(String::from("hello, world"));
+    let s1:&str = &s; // 赋值操作需要手动解引用
+    let s2: String = s.to_string();// 方法调用会自动解引用
+    println!("s1: {}, s2: {}", s1, s2);
+    /*
+    对于 s1，我们通过两次 Deref 将 &str 类型的值赋给了它（赋值操作需要手动解引用）；
+    而对于 s2，我们在其上直接调用方法 to_string，实际上 MyBox 根本没有没有实现该方法，能调用 to_string，
+    完全是因为编译器对 MyBox 应用了 Deref 的结果（方法调用会自动解引用）。
+     */
 }
 fn displayMyBox(b: &i32) {
     println!("{}", b);
