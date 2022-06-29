@@ -20,6 +20,7 @@ fn testMsg() {
     let m = MsgQueue { msg_cache: Rc::new(RefCell::new(vec!["hihihi~~".to_string()])) };
     let m1 = m.msg_cache.clone();
     let m2 = m.msg_cache.clone();
+    m1.borrow_mut().push("hihihi~~".to_string());
     m.send( "hello".to_string());
     println!("{:?}\n {:?}", m1, m2);
 }
@@ -31,17 +32,17 @@ fn is_even(i: i32) -> bool {
 
 fn retain_even(nums: &mut Vec<i32>) {
     let mut i = 0;
-    // for num in nums.iter().filter(|num| is_even(**num)) {
-    //     nums[i] = *num;
-    //     i += 1;
-    // }
+    for num in nums.iter().filter(|num| is_even(**num)) {
+        nums[i] = *num;
+        i += 1;
+    }
     /*
-    34 |     for num in nums.iter().filter(|num| is_even(**num)) {
+35 |     for num in nums.iter().filter(|num| is_even(**num)) {
    |                ----------------------------------------
    |                |
    |                immutable borrow occurs here
    |                immutable borrow later used here
-35 |         nums[i] = *num;
+36 |         nums[i] = *num;
    |         ^^^^ mutable borrow occurs here
      */
     let slice:&[Cell<i32>] = Cell::from_mut(&mut nums[..]).as_slice_of_cells();
