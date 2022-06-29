@@ -10,5 +10,6 @@ members =[
   "r7trait",
   "r8lifetime",
   "r9iterator",
-  "r10box"
+  "r10box",
+  "r11cell"
 ]
