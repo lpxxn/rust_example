@@ -69,6 +69,7 @@ fn testEven2() {
     retain_even(&mut nums);
     println!("{:?}", nums);
 
+    // test 3
     let mut nums = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     retain_even2(&mut nums);
     println!("{:?}", nums);
