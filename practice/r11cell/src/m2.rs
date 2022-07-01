@@ -32,10 +32,10 @@ fn is_even(i: i32) -> bool {
 
 fn retain_even(nums: &mut Vec<i32>) {
     let mut i = 0;
-    for num in nums.iter().filter(|num| is_even(**num)) {
-        nums[i] = *num;
-        i += 1;
-    }
+    // for num in nums.iter().filter(|num| is_even(**num)) {
+    //     nums[i] = *num;
+    //     i += 1;
+    // }
     /*
 35 |     for num in nums.iter().filter(|num| is_even(**num)) {
    |                ----------------------------------------
