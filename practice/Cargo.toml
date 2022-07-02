@@ -12,5 +12,6 @@ members =[
   "r9iterator",
   "r10box",
   "r11cell",
-  "r12thread"
+  "r12thread",
+  "r13channel"
 ]
