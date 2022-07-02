@@ -1,6 +1,6 @@
 extern crate core;
 
-use std::sync::{Arc, Condvar, Mutex, MutexGuard};
+use std::sync::{Arc, Condvar, Mutex, MutexGuard, Once};
 use std::thread;
 
 #[test]
@@ -46,3 +46,25 @@ fn test_condvar1() {
 }
 
 
+// once
+static INIT: Once = Once::new();
+static mut VAL: usize = 0;
+#[test]
+fn test_once() {
+    let handle1 = thread::spawn(move || {
+        INIT.call_once(|| {
+            println!("handle 1");
+            unsafe { VAL = 1; }
+        });
+    });
+
+    let handle2 = thread::spawn(move || {
+        INIT.call_once(|| {
+            println!("handle 2");
+            unsafe {VAL = 2;}
+        });
+    });
+    handle1.join().unwrap();
+    handle2.join().unwrap();
+    println!("{}", unsafe {VAL});
+}
