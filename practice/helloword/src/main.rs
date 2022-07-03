@@ -16,6 +16,5 @@ fn main() {
     for c in x.chars() {
         println!("{}", c);
     }
-    utf8_slice::
     // 用这个库 得到子串信息 https://crates.io/crates/utf8_slice
 }
