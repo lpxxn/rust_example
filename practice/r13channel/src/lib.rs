@@ -127,10 +127,11 @@ fn test_da_keng1() {
             println!("thread {:?} finished", i);
         });
     }
-
     // 这里drop send
-   // drop(send);
-
+    drop(send);
+    // thread::spawn(move || {
+    //    let a = send;
+    // });
     for x in recv {
         println!("got: {}", x);
     }
