@@ -24,6 +24,9 @@ fn test_try_recv() {
         tx.send(1).unwrap();
     });
     println!("receive {:?}", rx.try_recv());
+    thread::sleep(Duration::from_secs(1));
+    println!("receive {:?}", rx.try_recv());
+    println!("receive {:?}", rx.try_recv());
 }
 
 // 传输具有所有权的数据
@@ -35,12 +38,12 @@ fn test_sd_ownship() {
         tx.send(s).unwrap();
         //println!("val is {}", s);
         /*
-        33 |         let s = String::from("hello");
-   |             - move occurs because `s` has type `String`, which does not implement the `Copy` trait
-34 |         tx.send(s).unwrap();
-   |                 - value moved here
-35 |         println!("val is {}", s);
-   |                               ^ value borrowed here after move
+|         let s = String::from("hello");
+|             - move occurs because `s` has type `String`, which does not implement the `Copy` trait
+|         tx.send(s).unwrap();
+|                 - value moved here
+|         println!("val is {}", s);
+|                               ^ value borrowed here after move
          */
     });
     let received = rx.recv().unwrap();
@@ -106,4 +109,34 @@ println!("首次发送之后");
 tx.send(1).unwrap();
 println!("再次发送之后");
 一切的关键就在于1上，该值可以用来指定同步通道的消息缓存条数，当你设定为N时，发送者就可以无阻塞的往通道中发送N条消息，当消息缓冲队列满了后，新的消息发送将被阻塞(如果没有接收者消费缓冲队列中的消息，那么第N+1条消息就将触发发送阻塞)。
+ */
+
+
+/*
+关闭通道
+之前我们数次提到了通道关闭，并且提到了当通道关闭后，发送消息或接收消息将会报错。那么如何关闭通道呢？ 很简单：所有发送者被drop或者所有接收者被drop后，通道会自动关闭。
+ */
+#[test]
+fn test_da_keng1() {
+    let (send, recv) = mpsc::channel();
+    let num_threads = 3;
+    for i in 0..num_threads {
+        let thread_send = send.clone();
+        thread::spawn(move || {
+           thread_send.send(i).unwrap();
+            println!("thread {:?} finished", i);
+        });
+    }
+
+    // 这里drop send
+   // drop(send);
+
+    for x in recv {
+        println!("got: {}", x);
+    }
+    println!("finished iterating");
+}
+/*
+关闭通道
+之前我们数次提到了通道关闭，并且提到了当通道关闭后，发送消息或接收消息将会报错。那么如何关闭通道呢？ 很简单：所有发送者被drop或者所有接收者被drop后，通道会自动关闭。
  */
