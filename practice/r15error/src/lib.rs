@@ -1,5 +1,7 @@
-use std::fmt;
+use std::{fmt, io};
 use std::fmt::{Formatter, write};
+use std::fs::File;
+use std::path::is_separator;
 
 struct AppError {
     code: usize,
@@ -29,13 +31,27 @@ fn produce_error() -> Result<(), AppError> {
     })
 }
 
+impl From<io::Error> for AppError{
+    fn from(e: io::Error) -> Self {
+        AppError{
+            code: 111,
+            message: format!("appErr: {}", e.to_string())
+        }
+    }
+}
+
 #[test]
 fn it_works() {
     match produce_error() {
         Err(e) => eprintln!("{}", e),
         _ => println!("no error")
     }
-    let a: i32= (1,).0;
-    println!("{}", a);
+    eprintln!("{:?}", produce_error());
+    eprintln!("{:#?}", produce_error());
+}
 
+#[test]
+fn test_from_err() -> Result<(), AppError> {
+    let _file = File::open("hahahahhahah")?;
+    Ok(())
 }
