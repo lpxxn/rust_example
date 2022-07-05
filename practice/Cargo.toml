@@ -15,5 +15,6 @@ members =[
   "r11cell",
   "r12thread",
   "r13channel",
-  "r14condlock"
+  "r14condlock",
+  "r15error"
 ]
