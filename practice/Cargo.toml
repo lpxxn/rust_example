@@ -2,6 +2,7 @@
 members =[
   "helloword",
   "helloword2",
+  "r2result",
   "r3struct1",
   "r3array",
   "r4match",
