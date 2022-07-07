@@ -1,3 +1,5 @@
+mod array_t;
+
 fn main() {
     let  a1: [i32; 4] = [1, 2, 3, 4];
     println!("{:?}", a1);
