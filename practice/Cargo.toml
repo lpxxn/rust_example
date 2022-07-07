@@ -17,5 +17,6 @@ members =[
   "r12thread",
   "r13channel",
   "r14condlock",
-  "r15error"
+  "r15error",
+  "r16rawpointer"
 ]
