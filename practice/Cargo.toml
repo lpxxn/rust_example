@@ -7,6 +7,7 @@ members =[
   "r3array",
   "r4match",
   "r5method",
+  "r5ownship",
   "r6generic",
   "r7trait",
   "r8lifetime",
