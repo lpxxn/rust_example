@@ -24,6 +24,7 @@ fn it_works() {
         a: a1.a.clone(),
        ..a1
     };
+    let c = a.clone();
     println!("{:?}", a1);
 }
 
