@@ -1,3 +1,5 @@
+use std::fmt::Debug;
+
 struct Interface<'a: 'b, 'b> {
     manager: &'b mut Manager<'a>
 }
@@ -64,3 +66,74 @@ https://course.rs/advance/lifetime/basic.html#%E4%B8%89%E6%9D%A1%E6%B6%88%E9%99%
 
 
  */
+
+/*
+这个生命周期并不一定是指全局生存期，它的意思是
+“就算眼前这个scope里的所有其他东西都死了它也还活着所以你就可以放心的使用它而不用担心悬空引用了
+ */
+fn print_it<T: Debug +'static>(input: T) {
+    println!("'static value passed in is: {:?}", input);
+}
+
+fn print_it2(input: impl Debug +'static) {
+    println!("'static value passed in is:{:?}", input);
+}
+
+// fn print_it3<'a, T>(input: T) where for<'b> T: Debug + 'a {
+//     println!("'static value passed in is: {:?}", input);
+// }
+fn print_it3<T>(input: T) where T: Debug {
+    println!("'static value passed in is: {:?}", input);
+}
+fn print_it4<T: Debug + 'static>(input: &T) {
+    println!("'static value passed in is: {:?}", input);
+}
+#[test]
+fn test_print() {
+    let i = 5;
+    print_it(i);
+    print_it2(i);
+
+    //print_it(&i);
+    //print_it2(&i);
+
+    print_it3(&i);
+    print_it2(i);
+    print_it4(&i);/*
+    这段代码竟然不报错了！原因在于我们约束的是 T，但是使用的却是它的引用 &T，
+    换而言之，我们根本没有直接使用 T，因此编译器就没有去检查 T 的生命周期约束！
+    它只要确保 &T 的生命周期符合规则即可，在上面代码中，它自然是符合的。
+    */
+}
+
+/*
+关于Bounds：
+
+T: 'a  //T里的所有引用，都可以在'a生命周期之外存活
+T: Trait+'a //T实现Trait特质，且T内的所有引用，都在'a生命周期之外存活。
+ */
+// Ref是一个tuple，'a是生命周期，'a生命周期比tuple更长
+// tuple只有一个元素，这个元素是一个引用，是T的引用，这个引用的生命周期比Ref更长
+// T内部的所有引用都在生命周期'a，都超过Ref。
+#[derive(Debug)]
+struct Ref<'a, T: 'a>(&'a T);
+
+// 一个打印的范型函数。它的入参是范型T，且范型T必须实现Debug特质。
+// 因为实现了Debug特质，这个打印函数根据Debug特质进行打印。
+// 这个where指示T的属性
+fn print<T>(t: T) where T: Debug {
+    println!("`print`: t is {:?}", t);
+}
+
+// 这个print_ref函数，跟上面的print函数不同之处：
+// 这里的入参是引用，因此必须有生命周期。
+// 生命周期的意思是，T的生命周期是'a，比print_ref生命周期更长，T的所有引用都在'a
+// +'a 表示 a生命周期一定在print_ref外头
+fn print_ref<'a, T>(t: &'a T) where T: Debug + 'a {
+    println!("`print_ref`: t is {:?}", t);
+}
+
+#[test]
+fn test_print2() {
+
+}
