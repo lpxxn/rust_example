@@ -19,7 +19,7 @@ fn foo2<'a>(s: &'a [u32]) -> Box< dyn Foo<'a> + 'a> {
 }
 
 /*
-trait 默认是 'static 相当于  Box<dyn Foo<'a> + 'static>
+ Box 默认是 'static 相当于  Box<dyn Foo<'a> + 'static>
 17 | fn foo2<'a>(s: &'a [u32]) -> Box< dyn Foo<'a> > {
    |                --------- this data with lifetime `'a`...
 18 |     Box::new(FooImpl { s })
