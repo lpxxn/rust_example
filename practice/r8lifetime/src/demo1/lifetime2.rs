@@ -98,6 +98,9 @@ fn test_print() {
 
     //print_it(&i);
     //print_it2(&i);
+    {
+        //print_it(&i);
+    }
 
     print_it3(&i);
     print_it2(i);
