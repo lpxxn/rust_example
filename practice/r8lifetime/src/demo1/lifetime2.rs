@@ -96,7 +96,7 @@ fn test_print() {
     print_it(i);
     print_it2(i);
 
-    print_it(&i);
+    //print_it(&i);
     //print_it2(&i);
 
     print_it3(&i);
@@ -145,5 +145,5 @@ fn test_print2() {
     let _: Ref2<'_, String> = Ref2(&s);
     let r2 = Ref2(&s);
     let _: Ref2<'static, String> = Ref2(&STATIC_S);
-    let _: Ref2<'static, String> = Ref2(&s);
+    //let _: Ref2<'static, String> = Ref2(&s);
 }
