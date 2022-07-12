@@ -65,6 +65,8 @@ https://course.rs/advance/lifetime/basic.html#%E4%B8%89%E6%9D%A1%E6%B6%88%E9%99%
 规则其实很好理解，但是，爱思考的读者肯定要发问了，例如第三条规则，若一个方法，它的返回值的生命周期就是跟参数 &self 的不一样怎么办？总不能强迫我返回的值总是和 &self 活得一样久吧？! 问得好，答案很简单：手动标注生命周期，因为这些规则只是编译器发现你没有标注生命周期时默认去使用的，当你标注生命周期后，编译器自然会乖乖听你的话。
 
 https://doc.rust-lang.org/rust-by-example/scope/lifetime/static_lifetime.html
+https://practice.rs/lifetime/static.html#t-static
+
  */
 
 /*
