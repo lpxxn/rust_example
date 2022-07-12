@@ -69,7 +69,7 @@ https://practice.rs/lifetime/static.html#t-static
 
  */
 
-/*
+/* T: 'static   48 ke
 这个生命周期并不一定是指全局生存期，它的意思是
 “就算眼前这个scope里的所有其他东西都死了它也还活着所以你就可以放心的使用它而不用担心悬空引用了
  */
@@ -92,9 +92,13 @@ fn print_it4<T: Debug + 'static>(input: &T) {
 }
 #[test]
 fn test_print() {
+    // T: 'static, 1 字段串这样的静态生命周期的引用
+    // 2. 拥有所有权的类型， 非引用类型，
     let i = 5;
     print_it(i);
     print_it2(i);
+    print_it(String::from("abc")); // String是一个拥有所有权的类型，也就是static，和程序本身同生同灭 48 ke
+    print_it2(String::from("abc"));
 
     //print_it(&i);
     //print_it2(&i);
