@@ -17,13 +17,15 @@ impl Class {
 }
 
 struct Instance {
-    inner: Arc<dyn Any>,
+    //inner: Arc<dyn Any>,
+    inner: Box<dyn Any>,
+    //inner: &dyn Any,
 }
 
 impl Instance {
     fn new(obj: impl Any) -> Self {
         Self {
-            inner: Arc::new(obj)
+            inner: Box::new(obj)
         }
     }
 
