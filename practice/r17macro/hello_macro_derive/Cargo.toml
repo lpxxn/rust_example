@@ -1,11 +1,11 @@
 [package]
-name = "r17macro"
+name = "hello_macro_derive"
 version = "0.1.0"
 edition = "2021"
 
+[lib]
+proc-macro = true
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
-# hello_macro_derive = {path = "./hello_macro_derive"}
-## 也可以
-hello_macro_derive = {path="../r17macro/hello_macro_derive"}
+syn = "1.0"
+quote = "1.0"
