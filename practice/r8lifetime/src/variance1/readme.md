@@ -1,4 +1,5 @@
 https://nomicon.purewhite.io/subtyping.html
+https://doc.rust-lang.org/nomicon/subtyping.html
 
 生命周期只是代码的区域，而区域可以通过包含（比谁活得长）的关系来部分排序。生命周期的子类型是指这种关系：如果'big: 'small（“big 包含 small”或“big 比 small 活得长”），那么'big就是'small的一个子类型。这是一个很大的混乱来源，因为对许多人来说，它似乎是倒过来的：大区域是小区域的子类型。但是如果你考虑我们的动物例子，这就说得通了：猫是一种动物并且拥有更多特征，就像'big是'small的更多一样。
 

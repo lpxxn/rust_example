@@ -8,7 +8,7 @@ struct FooImpl<'a> {
 
 impl<'a> Foo<'a> for FooImpl<'a> {}
 
-// 'longest: 'short
+// 'longest 子: 'short 父
 // 输入要比输出的生命周期长
 fn foo<'a: 'b, 'b>(s: &'a [u32]) -> Box<dyn Foo<'b> + 'b> {
     Box::new(FooImpl { s })
