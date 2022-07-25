@@ -8,7 +8,8 @@ struct Song {
 }
 
 async fn learn_song() -> Song {
-    thread::sleep(Duration::from_secs(2));
+    //thread::sleep(Duration::from_secs(10));
+    async_std::task::sleep(std::time::Duration::from_secs(1)).await;
     Song {
         author: "tom".to_string(),
         name: String::from("mio mio")
