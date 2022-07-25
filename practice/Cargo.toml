@@ -20,5 +20,6 @@ members =[
   "r14condlock",
   "r15error",
   "r16rawpointer",
-  "r17macro"
+  "r17macro",
+  "r18async"
 ]
