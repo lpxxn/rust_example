@@ -16,3 +16,10 @@ cargo test test_mod_name::test_fn_name -- --exact
 For your case the solution will be :
 
 cargo test --package school_info repeat_students_should_not_get_full_marks -- --exact
+
+
+
+## rust wiki
+'_ 匿名生命周期
+https://rustwiki.org/zh-CN/edition-guide/rust-2018/ownership-and-lifetimes/the-anonymous-lifetime.html
+https://github.com/rust-lang-cn/edition-guide-cn/blob/master/src/rust-2018/ownership-and-lifetimes/the-anonymous-lifetime.md
