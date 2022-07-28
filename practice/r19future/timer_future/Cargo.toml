@@ -1,5 +1,5 @@
 [package]
-name = "r18async"
+name = "timer_future"
 version = "0.1.0"
 edition = "2021"
 
@@ -7,4 +7,3 @@ edition = "2021"
 
 [dependencies]
 futures = "0.3.21"
-async-std = "1.11.0"

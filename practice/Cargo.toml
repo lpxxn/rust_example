@@ -21,5 +21,6 @@ members =[
   "r15error",
   "r16rawpointer",
   "r17macro",
-  "r18async"
+  "r18async",
+  "r19future"
 ]
