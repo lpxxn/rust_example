@@ -33,7 +33,7 @@ impl Spawner {
             future: Mutex::new(Some(future)),
             task_sender: self.task_sender.clone()
         });
-        self.task_sender.send(task).expect("任务队列已满")
+        self.task_sender.send(task).expect("任务队列已满 new spawn")
     }
 }
 
@@ -46,6 +46,12 @@ struct Task {
     task_sender: SyncSender<Arc<Task>>,
 }
 
+impl ArcWake for Task {
+    fn wake_by_ref(arc_self: &Arc<Self>) {
+        let cloned = arc_self.clone();
+        arc_self.task_sender.send(cloned).expect("任务队列已满 in task")
+    }
+}
 
 fn new_executor_and_spawner() -> (Executor, Spawner) {
     const MAX_QUEUED_TASKS: usize = 10_000;
