@@ -81,7 +81,6 @@ fn new_executor_and_spawner() -> (Executor, Spawner) {
     (Executor { ready_queue }, Spawner { task_sender })
 }
 
-
 fn main() {
     let (executor, spawner) = new_executor_and_spawner();
 
