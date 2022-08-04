@@ -28,6 +28,6 @@ fn main() {
     test2.init();
 
     println!("a: {}, b: {}", test1.a(), test1.b());
+    std::mem::swap(&mut test1, &mut test2);
     println!("a: {}, b: {}", test2.a(), test2.b());
-
 }
